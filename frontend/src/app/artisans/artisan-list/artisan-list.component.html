@@ -1,0 +1,22 @@
+<!-- artisans/artisan-list/artisan-list.component.html -->
+<div class="container">
+    <h2>Liste des Artisans</h2>
+    <a routerLink="/artisans/new" class="btn btn-primary mb-3">Ajouter un Artisan</a>
+    
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let artisan of artisans">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ artisan.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ artisan.profession }}</h6>
+            <p class="card-text">{{ artisan.description | truncate:100 }}</p>
+            <div class="d-flex justify-content-between">
+              <a [routerLink]="['/artisans', artisan.id]" class="btn btn-sm btn-info">Détails</a>
+              <a [routerLink]="['/artisans', artisan.id, 'edit']" class="btn btn-sm btn-warning">Modifier</a>
+              <button (click)="deleteArtisan(artisan.id)" class="btn btn-sm btn-danger">Supprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
